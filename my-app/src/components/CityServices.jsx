@@ -1,36 +1,48 @@
 import React from "react";
 import "./CityServices.css";
+import { useNavigate } from "react-router-dom";
 
 const CityServices = () => {
+  const navigate = useNavigate();
+
   const services = [
     {
       title: "Water Supply",
       description:
         "Check water availability, report leaks, and access municipal water services.",
+      onClick: () => navigate("/citizen"),
     },
     {
       title: "Electricity",
       description:
         "Report power outages, pay bills, and access electricity services online.",
+      onClick: () => navigate("/citizen"),
     },
     {
       title: "Waste Management",
       description:
-        "Schedule pickups, report garbage issues, and track waste collection.",
+        "Track waste collection schedules and report issues in your area.",
+      onClick: () => navigate("/citizen"),
     },
     {
-      title: "Public Transport",
+      title: "Transportation",
       description:
-        "Check bus schedules, report issues, and get transport updates.",
+        "Get real-time public transport updates and plan your journey efficiently.",
+      onClick: () => navigate("/citizen"),
     },
   ];
 
   return (
-    <div className="city-services-container">
+    <div className="city-services">
       <h2>City Services</h2>
-      <div className="services-grid">
+      <div className="services-list">
         {services.map((service, index) => (
-          <div className="service-card" key={index}>
+          <div
+            className="service-card"
+            key={index}
+            onClick={service.onClick}
+            style={{ cursor: "pointer" }}
+          >
             <h3>{service.title}</h3>
             <p>{service.description}</p>
           </div>
