@@ -1,9 +1,10 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import "./CityServices.css";
 
 const ServiceDetails = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const service = location.state;
 
   if (!service) {
@@ -61,6 +62,13 @@ const ServiceDetails = () => {
 
   const info = serviceInfo[service.title];
 
+  // 🔥 navigate to form with state
+  const handleAction = (label) => {
+    navigate("/report-form", {
+      state: { serviceName: service.title, actionType: label },
+    });
+  };
+
   return (
     <div className="cd-page">
       <div className="cd-section">
@@ -72,6 +80,7 @@ const ServiceDetails = () => {
 
         <div className="cd-card cd-visual-card">
           <img src={service.img} alt={service.title} className="cd-card-img" />
+
           <div style={{ padding: "16px" }}>
             <p className="cd-muted">{service.details}</p>
             <hr style={{ margin: "12px 0" }} />
@@ -87,8 +96,11 @@ const ServiceDetails = () => {
               {info.actions.map((a, idx) => (
                 <button
                   key={idx}
-                  className={a.type === "primary" ? "cd-btn-primary" : "cd-btn-secondary"}
+                  className={
+                    a.type === "primary" ? "cd-btn-primary" : "cd-btn-secondary"
+                  }
                   style={{ marginRight: "8px", marginTop: "8px" }}
+                  onClick={() => handleAction(a.label)}
                 >
                   {a.label}
                 </button>

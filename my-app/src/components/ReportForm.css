@@ -1,0 +1,105 @@
+.report-page {
+  max-width: 650px;
+  margin: 60px auto;
+  padding: 28px;
+  background: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.report-page h2 {
+  text-align: center;
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 22px;
+  color: #1e3a8a; /* Navy */
+  letter-spacing: 0.5px;
+}
+
+.report-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.report-form input,
+.report-form textarea {
+  width: 100%;
+  padding: 15px 16px;
+  border: 1.5px solid #d1d5db;
+  border-radius: 10px;
+  font-size: 15px;
+  background: #f9fafb;
+  transition: all 0.25s ease;
+}
+
+.report-form input:hover,
+.report-form textarea:hover {
+  border-color: #3b82f6;
+}
+
+.report-form input:focus,
+.report-form textarea:focus {
+  background: #ffffff;
+  border-color: #2563eb;
+  box-shadow: 0px 0px 6px rgba(37, 99, 235, 0.4);
+}
+
+.report-form textarea {
+  min-height: 130px;
+  resize: vertical;
+}
+
+.cd-btn-primary {
+  padding: 14px;
+  background: #2563eb; /* Blue */
+  color: white;
+  font-size: 17px;
+  font-weight: 600;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: background 0.25s ease, transform 0.1s;
+  letter-spacing: 0.3px;
+}
+
+.cd-btn-primary:hover {
+  background: #1e40af;
+  transform: translateY(-1px);
+}
+
+.cd-btn-primary:active {
+  transform: translateY(1px);
+}
+
+.success-text {
+  text-align: center;
+  color: #059669;
+  margin-top: 12px;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .report-page {
+    padding: 18px;
+  }
+
+  .report-page h2 {
+    font-size: 22px;
+  }
+}

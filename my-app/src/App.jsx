@@ -15,6 +15,7 @@ import CitizenDashboard from "./components/CitizenDashboard";
 import AdminDashboard from "./components/AdminDashboard";
 import Navbar from "./components/Navbar";
 import ServiceDetails from "./components/ServiceDetails";
+import ReportForm from "./components/ReportForm";
 
 function App() {
   const [userRole, setUserRole] = useState(() =>
@@ -47,32 +48,48 @@ function App() {
         {/* Default route */}
         <Route
           path="/"
-          element={userRole ? <Navigate to="/dashboard" /> : <Navigate to="/login" />}
+          element={
+            userRole ? <Navigate to="/dashboard" /> : <Navigate to="/login" />
+          }
         />
         <Route
           path="/cityservices"
           element={userRole ? <CityServices /> : <Navigate to="/login" />}
         />
 
-<Route
-  path="/citizen"
-  element={userRole ? <ServiceDetails /> : <Navigate to="/login" />}
-/>
+        <Route
+          path="/citizen"
+          element={userRole ? <ServiceDetails /> : <Navigate to="/login" />}
+        />
 
         {/* Auth routes */}
         <Route
           path="/login"
-          element={userRole ? <Navigate to="/dashboard" /> : <Login onLogin={handleLogin} />}
+          element={
+            userRole ? (
+              <Navigate to="/dashboard" />
+            ) : (
+              <Login onLogin={handleLogin} />
+            )
+          }
         />
         <Route
           path="/signup"
-          element={userRole ? <Navigate to="/dashboard" /> : <Signup onSignup={handleSignup} />}
+          element={
+            userRole ? (
+              <Navigate to="/dashboard" />
+            ) : (
+              <Signup onSignup={handleSignup} />
+            )
+          }
         />
 
         {/* Protected routes */}
         <Route
           path="/home"
-          element={userRole ? <Home role={userRole} /> : <Navigate to="/login" />}
+          element={
+            userRole ? <Home role={userRole} /> : <Navigate to="/login" />
+          }
         />
         <Route
           path="/profile"
@@ -98,15 +115,19 @@ function App() {
             )
           }
         />
+        <Route path="/report-form" element={<ReportForm />} />
 
         {/* Admin-only route example */}
         <Route
           path="/admin"
           element={
-            userRole === "admin" ? <AdminDashboard /> : <Navigate to="/dashboard" />
+            userRole === "admin" ? (
+              <AdminDashboard />
+            ) : (
+              <Navigate to="/dashboard" />
+            )
           }
         />
-
       </Routes>
     </Router>
   );
